@@ -83,19 +83,7 @@ class LoginViewTestCase(TestCase):
         response = self.client.post(self.login_url, data)
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'login.html')
-        error_msg = 'Por favor, entre com um usuário  e senha corretos. Note que ambos os campos diferenciam maiúsculas e minúsculas.'
+        error_msg = 'Por favor, entre com um Apelido / Usuário  e senha corretos. Note que ambos os campos diferenciam maiúsculas e minúsculas.'
         self.assertFormError(response, 'form', None, error_msg)
 
 
-class RegisterViewTestCase(TestCase):
-
-    def setUp(self):
-        self.client = Client()
-        self.register_url = reverse('register')
-
-    def test_register_ok(self):
-        data = {'username': 'jamanta', 'password1': 'ameba2017', 'password2': 'ameba2017'}
-        response = self.client.post(self.register_url, data)
-        url_usada = reverse('login')
-        self.assertRedirects(response,url_usada)
-        self.assertEquals(User.objects.count(), 1)

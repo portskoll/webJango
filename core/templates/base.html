@@ -44,15 +44,14 @@
 				<li><a href="{% url 'logout' %}">Seja bem vindo > {{ user }} > Sair</a></li>
 				{%else %}
 				<li><a href="{% url 'login' %}">Entrar</a></li>
-				<li><a href="{% url 'register' %}">Registro</a></li>
+				<li><a href="{% url 'accounts:register' %}">Registro</a></li>
 				{% endif %}
-
-
 			</ul>
 		</div>
 	</div>
 </div>
-<div class="container">
+<br>
+<div class="container margin-top">
 	{% block container %}{% endblock %}
 	<footer>
 		<div class="row">

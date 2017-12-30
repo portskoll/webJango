@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     # apps
     'core',
+    'accounts',
     'catalog',
 ]
 
@@ -146,6 +147,12 @@ DEFAULT_FROM_EMAIL = 'mundotela@mundotela.net'
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
+LOGOUT_URL = 'logout'
+AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.ModelBackend',
+)
 
 try:
     from .local_settings import *
